@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "rimraf dist && tsc",
+    "build": "tsc",
     "release": "npm run build && semantic-release",
     "semantic-release": "semantic-release",
     "dry-run": "npm publish --dry-run",

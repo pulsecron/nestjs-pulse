@@ -123,7 +123,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
+!docs/pulse/4.x/
+!docs/pulse/6.x/
 dist
 .nyc_output
 coverage
