@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.1](https://github.com/pulsecron/nestjs-pulse/compare/v1.0.0...v1.0.1) (2024-04-14)
+
+
+### 🐛 BUG FIXES
+
+* package.json ([d812f1d](https://github.com/pulsecron/nestjs-pulse/commit/d812f1dd26ad1878e550d96dbf10df3ffbe61588))
+
 ## 1.0.0 (2024-04-14)
 
 
