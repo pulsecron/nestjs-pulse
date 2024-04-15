@@ -37,7 +37,7 @@
 
 ##  Overview
 
-[Pulse](https://github.com/pulsecron/nestjs-pulse) module for [NestJS](https://nestjs.com/)
+[Pulse](https://github.com/pulsecron/pulse) module for [NestJS](https://nestjs.com/)
 
 ---
 <br/>
