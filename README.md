@@ -97,7 +97,7 @@ import { NotificationsQueue } from './notification.processor';
 @Module({
   imports: [
     PulseModule.registerQueue('notifications', {
-      processEvery: '3 minutes',
+      processEvery: '1 minutes',
       autoStart: false, // default: true
     }),
   ],
@@ -117,7 +117,7 @@ import { Every, Queue } from '@pulsecron/nestjs-pulse';
 
 @Queue('notifications')
 export class NotificationsQueue {
-  @Every({ name: 'send notifications', interval: '3 minutes' })
+  @Every({ name: 'send notifications', interval: '2 minutes' })
   async sendNotifications(job: Job) {
     console.log('Sending notifications');
   }
