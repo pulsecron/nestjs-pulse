@@ -17,7 +17,7 @@
     "semantic-release": "semantic-release",
     "dry-run": "npm publish --dry-run",
     "lint": "eslint 'src/**/*.ts'",
-    "test:e2e": "ts-node -p tsconfig.json examples/test/src/main.ts"
+    "test:e2e": "ts-node examples/test/src/main.ts"
   },
   "author": "code-xhyun <shh6155@gmail.com>",
   "license": "MIT",
@@ -56,12 +56,11 @@
     "@semantic-release/npm": "^12.0.0",
     "@semantic-release/release-notes-generator": "^13.0.0",
     "conventional-changelog-conventionalcommits": "^7.0.2",
-    "@nestjs/cli": "^9.0.0",
-    "@nestjs/common": "^9.0.7",
-    "@nestjs/core": "^9.0.7",
-    "@nestjs/platform-express": "^9.0.7",
-    "@nestjs/testing": "^9.0.7",
-    "@swc/core": "^1.2.220",
+    "@nestjs/cli": "^10.3.7",
+    "@nestjs/common": "^9.3.7",
+    "@nestjs/core": "^10.3.7",
+    "@nestjs/platform-express": "^10.3.7",
+    "@nestjs/testing": "^10.3.7",
     "@types/node": "^18.6.3",
     "@pulsecron/pulse": "^1.1.2",
     "reflect-metadata": "^0.1.13",
@@ -74,8 +73,8 @@
     "mongodb-memory-server": "^9.1.8"
   },
   "peerDependencies": {
-    "@nestjs/common": "^9.0.0",
-    "@nestjs/core": "^9.0.0",
+    "@nestjs/common": "^9.x||^10.x",
+    "@nestjs/core": "^9.x||^10.x",
     "@pulsecron/pulse": "^1.1.2",
     "reflect-metadata": "^0.1.13",
     "mongodb-memory-server": "^9.1.8"
