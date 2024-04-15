@@ -2,7 +2,7 @@
   <img src="./pulse.png" width="100" alt="project-logo">
 </p>
 <p align="center">
-    <h1 align="center">Nestjs-Pulse</h1>
+    <h1 align="center">Nestjs-PULSE</h1>
 </p>
 <p align="center">
     <em>The modern MongoDB-powered scheduling library for NestJS</em>
