@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [1.0.4](https://github.com/pulsecron/nestjs-pulse/compare/v1.0.3...v1.0.4) (2024-04-16)
+
+
+### 📝 DOCS
+
+* add new notification service in README.md ([8a0f06e](https://github.com/pulsecron/nestjs-pulse/commit/8a0f06ef5a69bcb34ac9bccfaca06921749de786))
+
+
+### 🐛 BUG FIXES
+
+* delete default suffix queue name ([6f38c8e](https://github.com/pulsecron/nestjs-pulse/commit/6f38c8e88dcf6a54199f443e613cd2140e7e5970))
+
 ## [1.0.3](https://github.com/pulsecron/nestjs-pulse/compare/v1.0.2...v1.0.3) (2024-04-15)
 
 
