@@ -30,6 +30,7 @@
       - [app.module.ts](#appmodulets)
       - [notification.module.ts](#notificationmodulets)
       - [notification.processor.ts](#notificationprocessorts)
+      - [notification.service.ts](#notificationservicets)
 - [Contributing](#contributing)
 - [License](#license)
 </details>
@@ -113,23 +114,28 @@ export class NotificationsModule {}
 // src/notification/notification.processor.ts
 
 import { Job } from '@pulsecron/nestjs-pulse';
-import { Every, Queue } from '@pulsecron/nestjs-pulse';
+import { Every, Queue, Define, Schedule } from '@pulsecron/nestjs-pulse';
 
 @Queue('notifications')
 export class NotificationsQueue {
-  @Every({ name: 'send notifications', interval: '2 minutes' })
+  @Every({ name: 'send notifications', interval: '1 minutes' })
   async sendNotifications(job: Job) {
-    console.log('Sending notifications');
+    console.log('Sending notifications[1]');
   }
 
-  @Scheduler({ name: 'send notifications', when: 'tomorrow at noon' })
+  @Schedule({ name: 'send notifications', when: 'tomorrow at noon' })
   async sendNotifications(job: Job) {
-    console.log('Sending notifications');
+    console.log('Sending notifications[2]');
   }
 
   @Now()
   async sendNotifications(job: Job) {
-    console.log('Sending notifications');
+    console.log('Sending notifications[3]');
+  }
+   
+  @Define({ name: 'emailJob' })
+  async test(job: Job) {
+    console.log('Sending email to:', job.data.to);
   }
 }
 
@@ -137,6 +143,33 @@ export class NotificationsQueue {
 
 ```
 
+
+##### notification.service.ts
+```typescript
+
+import { Injectable } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
+
+@Injectable()
+export class NotificationService {
+  constructor(@Inject('notifications') private pulse: Pulse) {}
+
+  async scheduleEmail(email: string) {
+    const emailJob = this.pulse.create('emailJob', { to: email });
+    emailJob.unique(
+      {
+        'data.to': email,
+      },
+      {
+        insertOnly: true,
+      }
+    );
+    emailJob.schedule('5 seconds').save();
+  }
+}
+
+
+```
 
 ---
 <br/>
