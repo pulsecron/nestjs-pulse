@@ -10,7 +10,7 @@ import { getQueueConfigToken, getQueueToken } from './utils';
 
 @Module({
   imports: [DiscoveryModule],
-  providers: [PulseOrchestrator],
+  providers: [PulseOrchestrator, DatabaseService],
   exports: [PulseOrchestrator],
 })
 export class PulseModule {
