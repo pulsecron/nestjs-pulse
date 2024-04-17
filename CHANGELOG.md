@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [1.0.5](https://github.com/pulsecron/nestjs-pulse/compare/v1.0.4...v1.0.5) (2024-04-17)
+
+
+### 🐛 BUG FIXES
+
+* add DatabaseService provider to PulseModule ([#1](https://github.com/pulsecron/nestjs-pulse/issues/1)) ([14cd0e3](https://github.com/pulsecron/nestjs-pulse/commit/14cd0e307d5bc159393b0976f4f4d6f22126c79b))
+* add DatabaseService provider to PulseModule ([#2](https://github.com/pulsecron/nestjs-pulse/issues/2)) ([494bd60](https://github.com/pulsecron/nestjs-pulse/commit/494bd600565ff2b0abf7054cbd98919c5d1a2316))
+* update @pulsecron/pulse dependency to version 1.1.6 ([e546f64](https://github.com/pulsecron/nestjs-pulse/commit/e546f64d3d8a541c5d770cb0da8ab36b32453358))
+
 ## [1.0.4](https://github.com/pulsecron/nestjs-pulse/compare/v1.0.3...v1.0.4) (2024-04-16)
 
 
