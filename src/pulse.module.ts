@@ -1,6 +1,6 @@
 import { DynamicModule, InjectionToken, Module, Provider, Type, forwardRef } from '@nestjs/common';
 import { DiscoveryModule, ModuleRef } from '@nestjs/core';
-import { AGENDA_MODULE_CONFIG } from './constants';
+import { PULSE_MODULE_CONFIG } from './constants';
 import { pulseFactory } from './factories';
 import { PulseConfigFactory, PulseModuleAsyncConfig, PulseModuleConfig, PulseQueueConfig } from './interfaces';
 import { PulseExplorer, PulseMetadataAccessor } from './providers';
@@ -17,7 +17,7 @@ export class PulseModule {
   static forRoot(config: PulseModuleConfig): DynamicModule {
     const configProviders: Provider[] = [
       {
-        provide: AGENDA_MODULE_CONFIG,
+        provide: PULSE_MODULE_CONFIG,
         useValue: config,
       },
       DatabaseService,
@@ -35,7 +35,7 @@ export class PulseModule {
   }
 
   static forRootAsync(config: PulseModuleAsyncConfig<PulseModuleConfig>): DynamicModule {
-    const providers = this.createAsyncProviders<PulseModuleConfig>(AGENDA_MODULE_CONFIG, config);
+    const providers = this.createAsyncProviders<PulseModuleConfig>(PULSE_MODULE_CONFIG, config);
 
     return {
       global: true,
@@ -64,7 +64,7 @@ export class PulseModule {
       {
         provide: getQueueToken(name),
         useFactory: pulseFactory,
-        inject: [queueConfigToken, AGENDA_MODULE_CONFIG],
+        inject: [queueConfigToken, PULSE_MODULE_CONFIG],
       },
     ];
 
@@ -82,7 +82,7 @@ export class PulseModule {
       {
         provide: getQueueToken(name),
         useFactory: pulseFactory,
-        inject: [queueConfigToken, AGENDA_MODULE_CONFIG],
+        inject: [queueConfigToken, PULSE_MODULE_CONFIG],
       },
       ...this.createAsyncProviders<PulseQueueConfig>(queueConfigToken, config),
     ];

@@ -1,21 +1,15 @@
-import { Injectable, Inject, Type } from "@nestjs/common";
-import { Reflector } from "@nestjs/core";
-import {
-  JOB_PROCESSOR_TYPE,
-  JOB_NAME,
-  AGENDA_JOB_OPTIONS,
-  AGENDA_MODULE_QUEUE,
-  ON_QUEUE_EVENT,
-} from "../constants";
-import { PulseModuleJobOptions } from "../decorators";
-import { JobProcessorType } from "../enums";
+import { Injectable, Inject, Type } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
+import { JOB_PROCESSOR_TYPE, JOB_NAME, PULSE_JOB_OPTIONS, PULSE_MODULE_QUEUE, ON_QUEUE_EVENT } from '../constants';
+import { PulseModuleJobOptions } from '../decorators';
+import { JobProcessorType } from '../enums';
 
 @Injectable()
 export class PulseMetadataAccessor {
   constructor(@Inject(Reflector.name) private readonly reflector: Reflector) {}
 
   isQueue(target: Type<any> | Function): boolean {
-    return !!this.reflector.get(AGENDA_MODULE_QUEUE, target);
+    return !!this.reflector.get(PULSE_MODULE_QUEUE, target);
   }
 
   isEventListener(target: Type<any> | Function): boolean {
@@ -31,7 +25,7 @@ export class PulseMetadataAccessor {
   }
 
   getQueueMetadata(target: Type<any> | Function): any {
-    return this.reflector.get(AGENDA_MODULE_QUEUE, target);
+    return this.reflector.get(PULSE_MODULE_QUEUE, target);
   }
 
   getJobProcessorType(target: Function): JobProcessorType {
@@ -43,6 +37,6 @@ export class PulseMetadataAccessor {
   }
 
   getJobProcessorMetadata(target: Type<any> | Function): PulseModuleJobOptions {
-    return this.reflector.get(AGENDA_JOB_OPTIONS, target);
+    return this.reflector.get(PULSE_JOB_OPTIONS, target);
   }
 }
