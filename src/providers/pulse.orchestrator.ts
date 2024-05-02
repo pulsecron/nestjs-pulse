@@ -1,28 +1,21 @@
-import {
-  BeforeApplicationShutdown,
-  Injectable,
-  Logger,
-  OnApplicationBootstrap,
-} from "@nestjs/common";
-import { ModuleRef } from "@nestjs/core";
+import { BeforeApplicationShutdown, Injectable, Logger, OnApplicationBootstrap } from '@nestjs/common';
+import { ModuleRef } from '@nestjs/core';
 import Pulse, {
   PulseConfig,
   Job,
   Processor,
   JobAttributes,
-} from "@pulsecron/pulse";
-import { NO_QUEUE_FOUND } from "../pulse.messages";
-import {
-  PulseModuleJobOptions,
-  NonRepeatableJobOptions,
-  RepeatableJobOptions,
-} from "../decorators";
-import { JobProcessorType } from "../enums";
-import { PulseQueueConfig } from "../interfaces";
-import { DatabaseService } from "./database.service";
+  PulseOnEventType,
+  JobAttributesData,
+} from '@pulsecron/pulse';
+import { NO_QUEUE_FOUND } from '../pulse.messages';
+import { PulseModuleJobOptions, NonRepeatableJobOptions, RepeatableJobOptions } from '../decorators';
+import { JobProcessorType } from '../enums';
+import { PulseQueueConfig } from '../interfaces';
+import { DatabaseService } from './database.service';
 
 type JobProcessorConfig = {
-  handler: Processor<JobAttributes>;
+  handler: Processor<JobAttributesData>;
   type: JobProcessorType;
   options: RepeatableJobOptions | NonRepeatableJobOptions;
   useCallback: boolean;
@@ -38,17 +31,12 @@ type QueueRegistry = {
 };
 
 @Injectable()
-export class PulseOrchestrator
-  implements OnApplicationBootstrap, BeforeApplicationShutdown
-{
-  private readonly logger = new Logger("Pulse");
+export class PulseOrchestrator implements OnApplicationBootstrap, BeforeApplicationShutdown {
+  private readonly logger = new Logger('Pulse');
 
   private readonly queues: Map<string, QueueRegistry> = new Map();
 
-  constructor(
-    private readonly moduleRef: ModuleRef,
-    private readonly database: DatabaseService
-  ) {}
+  constructor(private readonly moduleRef: ModuleRef, private readonly database: DatabaseService) {}
 
   async onApplicationBootstrap() {
     await this.database.connect();
@@ -60,10 +48,7 @@ export class PulseOrchestrator
 
       this.attachEventListeners(queue, registry);
 
-      queue.mongo(
-        this.database.getConnection(),
-        config.collection || queueToken
-      );
+      queue.mongo(this.database.getConnection(), config.collection || queueToken);
 
       if (config.autoStart) {
         await queue.start();
@@ -99,7 +84,7 @@ export class PulseOrchestrator
 
   addJobProcessor(
     queueToken: string,
-    processor: Processor<JobAttributes> & Record<"_name", string>,
+    processor: Processor<JobAttributesData> & Record<'_name', string>,
     options: PulseModuleJobOptions,
     type: JobProcessorType,
     useCallback: boolean
@@ -114,12 +99,7 @@ export class PulseOrchestrator
     });
   }
 
-  addEventListener(
-    queueToken: string,
-    listener: EventListener,
-    eventName: string,
-    jobName?: string
-  ) {
+  addEventListener(queueToken: string, listener: EventListener, eventName: PulseOnEventType, jobName?: string) {
     const key = jobName ? `${eventName}:${jobName}` : eventName;
 
     this.queues.get(queueToken)?.listeners.set(key, listener);
@@ -127,26 +107,20 @@ export class PulseOrchestrator
 
   private attachEventListeners(pulse: Pulse, registry: QueueRegistry) {
     registry.listeners.forEach((listener: EventListener, eventName: string) => {
-      pulse.on(eventName, listener);
+      pulse.on(eventName as PulseOnEventType, listener);
     });
   }
 
   private defineJobProcessors(pulse: Pulse, registry: QueueRegistry) {
-    registry.processors.forEach(
-      (jobConfig: JobProcessorConfig, jobName: string) => {
-        const { options, handler, useCallback } = jobConfig;
+    registry.processors.forEach((jobConfig: JobProcessorConfig, jobName: string) => {
+      const { options, handler, useCallback } = jobConfig;
 
-        if (useCallback) {
-          pulse.define(
-            jobName,
-            (job: Job, done?: () => void) => handler(job, done),
-            options
-          );
-        } else {
-          pulse.define(jobName, handler, options);
-        }
+      if (useCallback) {
+        pulse.define(jobName, (job: Job, done: () => void = () => {}) => handler(job, done), options);
+      } else {
+        pulse.define(jobName, handler, options);
       }
-    );
+    });
   }
 
   private async scheduleJobs(pulse: Pulse, registry: QueueRegistry) {
@@ -156,18 +130,9 @@ export class PulseOrchestrator
       const { type, options } = jobConfig;
 
       if (type === JobProcessorType.EVERY) {
-        await pulse.every(
-          (options as RepeatableJobOptions).interval,
-          jobName,
-          {},
-          options
-        );
+        await pulse.every((options as RepeatableJobOptions).interval, jobName, {}, options);
       } else if (type === JobProcessorType.SCHEDULE) {
-        await pulse.schedule(
-          (options as NonRepeatableJobOptions).when,
-          jobName,
-          {}
-        );
+        await pulse.schedule((options as NonRepeatableJobOptions).when, jobName, {});
       } else if (type === JobProcessorType.NOW) {
         await pulse.now(jobName, {});
       }
