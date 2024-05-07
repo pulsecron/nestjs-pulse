@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.7](https://github.com/pulsecron/nestjs-pulse/compare/v1.0.6...v1.0.7) (2024-05-07)
+
+
+### 🐛 BUG FIXES
+
+* update @pulsecron/pulse dependency to version 1.4.1 ([4ec9f78](https://github.com/pulsecron/nestjs-pulse/commit/4ec9f78d7f789aafed2909b9e47b25a21feb3a32))
+
 ## [1.0.6](https://github.com/pulsecron/nestjs-pulse/compare/v1.0.5...v1.0.6) (2024-05-02)
 
 
