@@ -113,7 +113,7 @@ export class NotificationsModule {}
 ```typescript
 // src/notification/notification.processor.ts
 
-import { Job } from '@pulsecron/nestjs-pulse';
+import { Job } from '@pulsecron/pulse';
 import { Every, Queue, Define, Schedule } from '@pulsecron/nestjs-pulse';
 
 @Queue('notifications')
@@ -147,8 +147,8 @@ export class NotificationsQueue {
 ##### notification.service.ts
 ```typescript
 
-import { Injectable } from '@nestjs/common';
-import { Inject } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { Pulse } from '@pulsecron/pulse';
 
 @Injectable()
 export class NotificationService {
