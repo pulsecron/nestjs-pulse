@@ -8,35 +8,35 @@
     <em>The modern MongoDB-powered scheduling library for NestJS</em>
 </p>
 <p align="center">
-	<img src="https://img.shields.io/github/license/pulsecron/nestjs-pulse?style=default&logo=opensourceinitiative&logoColor=white&color=24E0A4" alt="license">
-	<img src="https://img.shields.io/github/last-commit/pulsecron/nestjs-pulse?style=default&logo=git&logoColor=white&color=24E0A4" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/pulsecron/nestjs-pulse?style=default&color=24E0A4" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/pulsecron/nestjs-pulse?style=default&color=24E0A4" alt="repo-language-count">
+ <img src="https://img.shields.io/github/license/pulsecron/nestjs-pulse?style=default&logo=opensourceinitiative&logoColor=white&color=24E0A4" alt="license">
+ <img src="https://img.shields.io/github/last-commit/pulsecron/nestjs-pulse?style=default&logo=git&logoColor=white&color=24E0A4" alt="last-commit">
+ <img src="https://img.shields.io/github/languages/top/pulsecron/nestjs-pulse?style=default&color=24E0A4" alt="repo-top-language">
+ <img src="https://img.shields.io/github/languages/count/pulsecron/nestjs-pulse?style=default&color=24E0A4" alt="repo-language-count">
 <p>
 <p align="center">
-	<!-- default option, no dependency badges. -->
+ <!-- default option, no dependency badges. -->
 </p>
 
 <br><!-- TABLE OF CONTENTS -->
-
 
 <details>
   <summary>Table of Contents</summary><br>
 
 - [Overview](#overview)
 - [Getting Started](#getting-started)
-    - [Installation](#installation)
-    - [Example](#example)
-      - [app.module.ts](#appmodulets)
-      - [notification.module.ts](#notificationmodulets)
-      - [notification.processor.ts](#notificationprocessorts)
-      - [notification.service.ts](#notificationservicets)
+  - [Installation](#installation)
+  - [Example](#example)
+    - [app.module.ts](#appmodulets)
+    - [notification.module.ts](#notificationmodulets)
+    - [notification.processor.ts](#notificationprocessorts)
+    - [notification.service.ts](#notificationservicets)
 - [Contributing](#contributing)
 - [License](#license)
+
 </details>
 <hr>
 
-##  Overview
+## Overview
 
 [Pulse](https://github.com/pulsecron/pulse) module for [NestJS](https://nestjs.com/)
 
@@ -44,27 +44,18 @@
 <br/>
 <br/>
 
+## Getting Started
 
-
-
-
-
-
-##  Getting Started
-
-
-
-####  Installation
+#### Installation
 
  ```console
- $ npm install --save @pulsecron/nestjs-pulse @pulsecron/pulse
+ npm install --save @pulsecron/nestjs-pulse @pulsecron/pulse
 ```
 
-
-
-####  Example
+#### Example
 
 ##### app.module.ts
+
 ```typescript
 // src/app.module.ts
 
@@ -88,6 +79,7 @@ export class AppModule {}
 ```
 
 ##### notification.module.ts
+
 ```typescript
 // src/notification/notification.module.ts
 
@@ -110,6 +102,7 @@ export class NotificationsModule {}
 ```
 
 ##### notification.processor.ts
+
 ```typescript
 // src/notification/notification.processor.ts
 
@@ -143,8 +136,8 @@ export class NotificationsQueue {
 
 ```
 
-
 ##### notification.service.ts
+
 ```typescript
 
 import { Inject, Injectable } from '@nestjs/common';
@@ -175,7 +168,7 @@ export class NotificationService {
 <br/>
 <br/>
 
-##  Contributing
+## Contributing
 
 Contributions are welcome! Here are several ways you can contribute:
 
@@ -188,24 +181,33 @@ Contributions are welcome! Here are several ways you can contribute:
 
 1. **Fork the Repository**: Start by forking the project repository to your github account.
 2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
+
    ```sh
    git clone https://github.com/pulsecron/nestjs-pulse
    ```
+
 3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
+
    ```sh
    git checkout -b new-feature-x
    ```
+
 4. **Make Your Changes**: Develop and test your changes locally.
 5. **Commit Your Changes**: Commit with a clear message describing your updates.
+
    ```sh
    git commit -m 'Implemented new feature x.'
    ```
+
 6. **Push to github**: Push the changes to your forked repository.
+
    ```sh
    git push origin new-feature-x
    ```
+
 7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
 8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
+
 </details>
 
 <details closed>
@@ -222,11 +224,10 @@ Contributions are welcome! Here are several ways you can contribute:
 <br/>
 <br/>
 
-##  License
+## License
 
 This project is protected under the [MIT](https://github.com/pulsecron/nestjs-pulse?tab=MIT-1-ov-file#readme) License. For more details, refer to the [LICENSE](https://github.com/pulsecron/nestjs-pulse?tab=MIT-1-ov-file#readme) file.
 
 ---
 <br/>
 <br/>
-
