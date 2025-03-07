@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [1.0.8](https://github.com/pulsecron/nestjs-pulse/compare/v1.0.7...v1.0.8) (2025-03-07)
+
+### 🚀 FEATURES
+
+* support nestjs version 11 ([#9](https://github.com/pulsecron/nestjs-pulse/issues/9)) ([36563c9](https://github.com/pulsecron/nestjs-pulse/commit/36563c9230a5ed005ef324a04f531db19f94477c))
+
+### 🐛 BUG FIXES
+
+* updating readme after package updates ([cc09b46](https://github.com/pulsecron/nestjs-pulse/commit/cc09b4636bfa64f9e0d055f97e26ca500b47d53e))
+* updating readme after package updates ([742ba01](https://github.com/pulsecron/nestjs-pulse/commit/742ba01bb9c20bd3de8e668b97ef0ca5320d818a))
+
 ## [1.0.7](https://github.com/pulsecron/nestjs-pulse/compare/v1.0.6...v1.0.7) (2024-05-07)
 
 
