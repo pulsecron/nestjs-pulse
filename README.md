@@ -38,7 +38,7 @@
 
 ## Overview
 
-[Pulse](https://github.com/pulsecron/pulse) module for [NestJS](https://nestjs.com/)
+[Pulse](https://github.com/pulsecron/pulse) module for [NestJS](https://nestjs.com/), working with nestjs v9.x, v10.x and v11.x.
 
 ---
 <br/>
@@ -46,7 +46,7 @@
 
 ## Getting Started
 
-#### Installation
+### Installation
 
  ```console
  npm install --save @pulsecron/nestjs-pulse @pulsecron/pulse
